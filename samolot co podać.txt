@@ -1,0 +1,62 @@
+var passengers = [
+{name: "PZ", paid: true, ticket: "pierwsza" },
+{name: "PJ", paid: true, ticket: "turystyczna"},
+{name: "FK", paid: true, ticket: "premium"}
+]
+
+function CreateDrinkOrder(passenger){
+	var OrderFunction;
+	if(passenger.ticket === "pierwsza"){
+		OrderFunction = function(){
+			alert(passenger.name + " Podać Koktail czy drinka?");
+		};
+	}
+	else if(passenger.ticket === "turystyczna"){
+		OrderFunction = function(){
+			alert(passenger.name + " Podać wodę czy colę?");
+		};
+	}
+	else {OrderFunction = function(){
+		alert(passenger.name + " Podać wodę, colę czy wino?");}
+	};
+	return OrderFunction
+}
+
+
+function CreateFoodOrder(passenger){
+	var OrderFunction;
+	if(passenger.ticket === "pierwsza"){
+		OrderFunction = function(){
+			alert(passenger.name + " Podać kurczaka czy makaron?");
+		};
+	}
+	else if(passenger.ticket === "turystyczna"){
+		OrderFunction = function(){
+			alert(passenger.name + " Podać orzeszki czy precelki?");
+		};
+	}
+	else {OrderFunction = function(){
+		alert(passenger.name + " Podać przekąskę czy talerz serów?");}
+	};
+	return OrderFunction
+}
+
+
+function serveCustomer(passenger) {
+ var getDrinkOrder = CreateDrinkOrder(passenger);
+ var getFoodOrder = CreateFoodOrder(passenger);
+ 
+ getDrinkOrder();
+ getFoodOrder();
+}
+
+function servePassengers(passengers){
+	for (var i = 0; i <passengers.length; i++){
+		serveCustomer(passengers[i]);
+		}
+}
+
+servePassengers(passengers);
+
+
+
